@@ -1,32 +1,58 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" app>
+      <v-list dense>
+        <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
+          <v-list-item-action>
+            <v-icon>{{link.icon}}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{link.text}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar app color="green" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-toolbar-title>Covid19 - Corona</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <v-container>
+          <router-view></router-view>
+      </v-container>
+    </v-content>
+    
+    <v-footer color="green" app>
+      <span class="text-right white--text">Made With <v-icon>mdi-heart</v-icon> in Lampung &copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import HelloWorld from './components/HelloWorld';
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: "App",
+  props: {
+        source: String,
+    },
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  components: {
+    // HelloWorld,
+  },
+
+  data: () => ({
+    //
+    drawer: null,
+    links:[
+      {icon: 'mdi-home', text: 'Home', route: '/'},
+      {icon: 'mdi-access-point', text: 'Dashboard Indonesia', route: '/dashindo'},
+      {icon: 'mdi-access-point', text: 'Dashboard Global', route: '/dashglobal'},
+      {icon: 'mdi-home', text: 'About', route: '/about'}
+    ]
+  })
+};
+</script>
