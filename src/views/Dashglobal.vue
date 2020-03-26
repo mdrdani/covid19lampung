@@ -4,7 +4,7 @@
           <v-col cols="12">
 
             <!-- card-utama -->
-            <v-card v-for="corona in coronas" :key="corona.FID" class="mb-2 mx-auto" outlined-2 >
+            <v-card v-for="corona in coronas" :key="corona.FID" class="mb-5 mx-auto" outlined-2 >
               <v-list-item three-line>
                 <v-list-item-content>
                   <v-list-item-title class="headline mb-1">{{corona.attributes.Country_Region}}</v-list-item-title>
