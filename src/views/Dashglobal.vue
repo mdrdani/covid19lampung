@@ -18,7 +18,7 @@
               <v-list-item-title class="headline mb-1">{{corona.attributes.Country_Region}}</v-list-item-title>
               <v-list-item-subtitle class="text--secondary">Update {{ date | moment }}</v-list-item-subtitle>
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Positif</v-card-title>
                     <p class="ml-3 white--text display-2">{{corona.attributes.Confirmed}}</p>
@@ -30,7 +30,7 @@
               </v-col>
 
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency2.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Meninggal</v-card-title>
                     <p class="ml-3 white--text display-2">{{corona.attributes.Deaths}}</p>
@@ -42,7 +42,7 @@
               </v-col>
 
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency3.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Sembuh</v-card-title>
                     <p class="ml-3 white--text display-2">{{corona.attributes.Recovered}}</p>
@@ -78,7 +78,8 @@ export default {
   computed: {
     filterCount: function(){
       return this.coronas.filter(corona => {
-        return corona.attributes.Country_Region.toLowerCase().match(this.search)
+        return corona.attributes.Country_Region.toLowerCase().match(this.search) ||
+        corona.attributes.Country_Region.toUpperCase().match(this.search)
       });
     }
   },

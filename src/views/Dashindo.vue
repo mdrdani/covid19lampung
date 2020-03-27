@@ -3,13 +3,13 @@
     <v-row no-gutters>
       <v-col cols="12">
         <!-- card-utama -->
-        <v-card v-for="total in totalcoronas" :key="total.name" class="mb-5 mx-auto" outlined-2>
+        <v-card v-for="total in totalcoronas" :key="total.name" class="mb-5 mx-auto" outline-2>
           <v-list-item three-line>
             <v-list-item-content>
-              <v-list-item-title class="headline mb-1">Total</v-list-item-title>
+              <v-list-item-title class="headline mb-1">Total Seluruh</v-list-item-title>
               <v-list-item-subtitle class="text--secondary">Update {{ date | moment }}</v-list-item-subtitle>
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Positif</v-card-title>
                     <p class="ml-3 white--text display-2">{{total.positif}}</p>
@@ -21,7 +21,7 @@
               </v-col>
 
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency2.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Meninggal</v-card-title>
                     <p class="ml-3 white--text display-2">{{total.meninggal}}</p>
@@ -33,7 +33,7 @@
               </v-col>
 
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency3.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Sembuh</v-card-title>
                     <p class="ml-3 white--text display-2">{{total.sembuh}}</p>
@@ -64,7 +64,7 @@
               <v-list-item-title class="headline mb-1">{{corona.attributes.Provinsi}}</v-list-item-title>
               <v-list-item-subtitle class="text--secondary">Update {{ date | moment }}</v-list-item-subtitle>
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Positif</v-card-title>
                     <p class="ml-3 white--text display-2">{{corona.attributes.Kasus_Posi}}</p>
@@ -76,7 +76,7 @@
               </v-col>
 
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency2.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Meninggal</v-card-title>
                     <p class="ml-3 white--text display-2">{{corona.attributes.Kasus_Meni}}</p>
@@ -88,7 +88,7 @@
               </v-col>
 
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
-                <v-card>
+                <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency3.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Sembuh</v-card-title>
                     <p class="ml-3 white--text display-2">{{corona.attributes.Kasus_Semb}}</p>
@@ -125,7 +125,8 @@ export default {
   computed: {
     filterProv: function() {
       return this.coronas.filter(corona => {
-        return corona.attributes.Provinsi.toLowerCase().match(this.search)
+        return corona.attributes.Provinsi.toLowerCase().match(this.search) ||
+        corona.attributes.Provinsi.toUpperCase().match(this.search)
       });
     }
   },
@@ -155,3 +156,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+</style>
