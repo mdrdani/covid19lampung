@@ -11,16 +11,23 @@
         transition="fade-transition"
       ></v-carousel-item>
     </v-carousel>
+    <br>
+    <v-alert
+      dense
+      text
+      type="success"
+    >
+      Sumber Data : kawalcorona.com. Update Terakhir : {{ date | moment }}
+    </v-alert>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
+import moment from 'moment'
 export default {
   name: "Home",
-  data() {
-    return {
+  data(){
+    return{
       items: [
         {
           src:
@@ -39,8 +46,20 @@ export default {
             "https://www.covid19.go.id/wp-content/uploads/2020/03/Flyer-2020-coronavirus-masyarakat.jpg"
         }
       ]
-    };
+    }
   },
-  components: {}
-};
+  mounted(){
+    this.moment()
+  },
+  methods: {
+    moment: function(){
+      return moment();
+    }
+  },
+  filters: {
+    moment: function(date){
+      return moment(date).locale('id').format('D MMMM YYYY, h:mm:ss a');
+    }
+  }
+}
 </script>

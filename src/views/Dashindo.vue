@@ -8,7 +8,7 @@
               <v-list-item three-line>
                 <v-list-item-content>
                   <v-list-item-title class="headline mb-1">Total</v-list-item-title>
-                  <v-list-item-subtitle class="text--secondary">Update {{ new Date() | moment(" D MMMM YYYY") }} </v-list-item-subtitle>
+                  <v-list-item-subtitle class="text--secondary">Update {{ date | moment }} </v-list-item-subtitle>
                   <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
                     <v-card>
                       <v-navigation-drawer
@@ -69,7 +69,7 @@
               <v-list-item three-line>
                 <v-list-item-content>
                   <v-list-item-title class="headline mb-1">{{corona.attributes.Provinsi}}</v-list-item-title>
-                  <v-list-item-subtitle class="text--secondary">Update {{ new Date() | moment(" D MMMM YYYY") }} </v-list-item-subtitle>
+                  <v-list-item-subtitle class="text--secondary">Update {{ date | moment }} </v-list-item-subtitle>
                   <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
                     <v-card>
                       <v-navigation-drawer
@@ -132,6 +132,7 @@
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
 export default {
     name: "Dashindo",
     data(){
@@ -142,7 +143,8 @@ export default {
     },
     mounted(){
         this.load(),
-        this.loadd()
+        this.loadd(),
+        this.moment()
     },
     methods:{
         async load() {
@@ -155,6 +157,14 @@ export default {
             .then(res => this.totalcoronas = res.data)
             .catch(error => console.log(error.response.data))
         },
+        moment: function(){
+          return moment();
+        }
+    },
+    filters: {
+      moment: function(date) {
+        return moment(date).locale('id').format('D MMMM YYYY');
+      }
     }
 }
 </script>
