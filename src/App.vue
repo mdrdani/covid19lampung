@@ -49,6 +49,7 @@ export default {
     drawer: null,
     links:[
       {icon: 'mdi-home', text: 'Home', route: '/'},
+      {icon: 'mdi-access-point', text: 'Dashboard Lampung', route: '/dashlpg'},
       {icon: 'mdi-access-point', text: 'Dashboard Indonesia', route: '/dashindo'},
       {icon: 'mdi-access-point', text: 'Dashboard Global', route: '/dashglobal'},
       {icon: 'mdi-home', text: 'About', route: '/about'}

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Dashindo from '../views/Dashindo.vue'
 import Dashglobal from '../views/Dashglobal.vue'
+import Dashlampung from '../views/Dashlampung.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
+    path : '/dashlpg',
+    name : 'Dashlampung',
+    component : Dashlampung
+  },
+  {
     path : '/dashindo',
     name : 'Dashindo',
     component : Dashindo
@@ -29,7 +35,7 @@ const routes = [
     path : '/dashglobal',
     name : 'Dashglobal',
     component : Dashglobal
-  }
+  },
 ]
 
 const router = new VueRouter({

@@ -15,7 +15,7 @@
         <v-card v-for="corona in filterCount" :key="corona.OBJECTID" class="mb-5 mx-auto" outlined-2>
           <v-list-item three-line>
             <v-list-item-content>
-              <v-list-item-title class="headline mb-1">{{corona.attributes.Country_Region}}</v-list-item-title>
+              <v-list-item-title class="headline mb-1">{{corona.attributes.Country_Region.toUpperCase()}}</v-list-item-title>
               <v-list-item-subtitle class="text--secondary">Update {{ date | moment }}</v-list-item-subtitle>
               <v-col class="float-right" v-for="n in 1" :key="n" cols="12" sm="4">
                 <v-card style="border-radius:25px;">
@@ -78,8 +78,7 @@ export default {
   computed: {
     filterCount: function(){
       return this.coronas.filter(corona => {
-        return corona.attributes.Country_Region.toLowerCase().match(this.search) ||
-        corona.attributes.Country_Region.toUpperCase().match(this.search)
+        return corona.attributes.Country_Region.toUpperCase().match(this.search.toUpperCase())
       });
     }
   },
