@@ -1,9 +1,10 @@
 <template>
   <div class="dashboard">
+    <go-top :size="50" bg-color="green" :max-width="100"></go-top>
     <v-row no-gutters>
       <v-col cols="12">
         <!-- card-utama -->
-        <v-card v-for="total in totalcoronas" :key="total.name" class="mb-5 mx-auto" outline-2>
+        <v-card v-for="total in totalcoronas" :key="total.name" class="mb-5 mx-auto" raised>
           <v-list-item three-line>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">Total Seluruh</v-list-item-title>
@@ -111,8 +112,12 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+import GoTop from '@inotom/vue-go-top';
 export default {
   name: "Dashindo",
+  components: {
+    GoTop
+  },
   data() {
     return {
       coronas: [],

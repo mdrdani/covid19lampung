@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard">
+    <go-top :size="50" bg-color="green" :max-width="100"></go-top>
     <v-row no-gutters>
       <v-col cols="12">
         <v-text-field
@@ -64,8 +65,12 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+import GoTop from '@inotom/vue-go-top';
 export default {
   name: "Dashindo",
+  components: {
+    GoTop
+  },
   data() {
     return {
       coronas: [],

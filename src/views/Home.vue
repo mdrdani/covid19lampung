@@ -31,6 +31,10 @@ export default {
       items: [
         {
           src:
+            "https://asset.kompas.com/data/photo/special-page/infographic/32003201110456.jpeg"
+        },
+        {
+          src:
             "https://www.covid19.go.id/wp-content/uploads/2020/03/Cara-Memakai-masker-yang-benar.jpg"
         },
         {
@@ -44,7 +48,7 @@ export default {
         {
           src:
             "https://www.covid19.go.id/wp-content/uploads/2020/03/Flyer-2020-coronavirus-masyarakat.jpg"
-        }
+        },
       ]
     }
   },
