@@ -51,7 +51,7 @@
             <v-card shaped>
               <v-navigation-drawer dark src="../assets/odp.jpg" width="100%" permanent>
                 <v-card-title class="white--text headline">ODP (Orang Dalam Pengawasan)</v-card-title>
-                <p class="ml-3 white--text display-2">431</p>
+                <p class="ml-3 white--text display-2">650</p>
                 <v-card-actions>
                   <p class="pl-2 white--text subtitle-1">Orang</p>
                 </v-card-actions>
@@ -63,7 +63,7 @@
             <v-card shaped>
               <v-navigation-drawer dark src="../assets/pdp.jpg" width="100%" permanent>
                 <v-card-title class="white--text headline">PDP (Pasien Dalam Pengawasan)</v-card-title>
-                <p class="ml-3 white--text display-2">13</p>
+                <p class="ml-3 white--text display-2">11</p>
                 <v-card-actions>
                   <p class="pl-2 white--text subtitle-1">Orang</p>
                 </v-card-actions>
@@ -86,7 +86,7 @@
 
     <div>
       <div class="text-center mb-4">
-        <v-btn color="primary" @click="alert = !alert">Kontak Penting Rumah Sakit Provinsi Lampung</v-btn>
+        <v-btn color="primary" @click="alert = !alert">Kontak RS Provinsi Lampung</v-btn>
       </div>
 
       <v-alert 
