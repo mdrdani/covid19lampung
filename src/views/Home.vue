@@ -17,7 +17,7 @@
       text
       type="success"
     >
-      Sumber Data : kawalcorona.com. Update Terakhir : {{ date | moment }}
+      Sumber Data : kawalcorona.com, github.com/novelcovid/api || Update Terakhir : {{ date | moment }}
     </v-alert>
   </div>
 </template>

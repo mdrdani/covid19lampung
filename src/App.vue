@@ -25,7 +25,7 @@
     </v-content>
     
     <v-footer color="green" app>
-      <span class="text-right white--text">Made With <v-icon>mdi-heart</v-icon> in Lampung &copy; {{ new Date().getFullYear() }}</span>
+      <span class="text-right white--text"> &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>

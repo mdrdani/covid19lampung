@@ -4,7 +4,7 @@
     <v-row no-gutters>
       <v-col cols="12">
         <!-- card-utama -->
-        <v-card v-for="total in totalcoronas" :key="total.name" class="mb-5 mx-auto" raised>
+        <v-card class="mb-5 mx-auto" raised>
           <v-list-item three-line>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">Total Seluruh</v-list-item-title>
@@ -13,10 +13,15 @@
                 <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Positif</v-card-title>
-                    <p class="ml-3 white--text display-2">{{total.positif}}</p>
-                    <v-card-actions>
-                      <p class="pl-2 white--text subtitle-1">Orang</p>
-                    </v-card-actions>
+                    <p class="ml-3 white--text display-2">
+                      {{totalcoronas.cases}}
+                      <span class="headline">Orang</span>
+                    </p>
+                    <v-chip class="ma-2" color="yellow" text-color="black">
+                      <v-avatar left>
+                        <v-icon>mdi-account-circle</v-icon>
+                      </v-avatar>Hari ini <v-icon> mdi-plus-minus</v-icon> {{totalcoronas.todayCases}} Orang
+                    </v-chip>
                   </v-navigation-drawer>
                 </v-card>
               </v-col>
@@ -25,10 +30,15 @@
                 <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency2.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Meninggal</v-card-title>
-                    <p class="ml-3 white--text display-2">{{total.meninggal}}</p>
-                    <v-card-actions>
-                      <p class="pl-2 white--text subtitle-1">Orang</p>
-                    </v-card-actions>
+                    <p class="ml-3 white--text display-2">
+                      {{totalcoronas.deaths}}
+                      <span class="headline">Orang</span>
+                    </p>
+                    <v-chip class="ma-2" color="red" text-color="white">
+                      <v-avatar left>
+                        <v-icon>mdi-account-circle</v-icon>
+                      </v-avatar>Hari ini {{totalcoronas.todayDeaths}} Orang
+                    </v-chip>
                   </v-navigation-drawer>
                 </v-card>
               </v-col>
@@ -37,10 +47,15 @@
                 <v-card style="border-radius:25px;">
                   <v-navigation-drawer dark src="../assets/emergency3.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Sembuh</v-card-title>
-                    <p class="ml-3 white--text display-2">{{total.sembuh}}</p>
-                    <v-card-actions>
-                      <p class="pl-2 white--text subtitle-1">Orang</p>
-                    </v-card-actions>
+                    <p class="ml-3 white--text display-2">
+                      {{totalcoronas.recovered}}
+                      <span class="headline">Orang</span>
+                    </p>
+                    <v-chip class="ma-2" color="teal" text-color="white">
+                      <v-avatar left>
+                        <v-icon>mdi-account-circle</v-icon>
+                      </v-avatar>{{totalcoronas.active}} Orang Masih Perawatan
+                    </v-chip>
                   </v-navigation-drawer>
                 </v-card>
               </v-col>
@@ -56,7 +71,6 @@
           single-line
           hide-details
           class="mb-3"
-          
         ></v-text-field>
 
         <!-- card-utama -->
@@ -112,7 +126,7 @@
 <script>
 import axios from "axios";
 import moment from "moment";
-import GoTop from '@inotom/vue-go-top';
+import GoTop from "@inotom/vue-go-top";
 export default {
   name: "Dashindo",
   components: {
@@ -131,7 +145,9 @@ export default {
   computed: {
     filterProv: function() {
       return this.coronas.filter(corona => {
-        return corona.attributes.Provinsi.toUpperCase().match(this.search.toUpperCase())
+        return corona.attributes.Provinsi.toUpperCase().match(
+          this.search.toUpperCase()
+        );
       });
     }
   },
@@ -144,9 +160,9 @@ export default {
     },
     async loadd() {
       axios
-        .get("https://api.kawalcorona.com/indonesia/")
+        .get("https://corona.lmao.ninja/countries/Indonesia")
         .then(res => (this.totalcoronas = res.data))
-        .catch(error => console.log(error.response.data));
+        .catch(error => console.log(error.response.data.data));
     },
     moment: function() {
       return moment();
@@ -163,5 +179,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
