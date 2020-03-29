@@ -77,14 +77,19 @@
               </v-col>
             </v-row>
           </v-container>
-          <v-continer>
+          <v-container class="grey lighten-5">
             <v-row justify="center" no-gutters>
               <v-col class="pa-2" cols="12" sm="6">
-                <v-list-item-title class="title mb-3">Persentase Kasus Covid-19</v-list-item-title>
+                <v-list-item-title class="title mb-3">Pie Chart Kasus Covid-19</v-list-item-title>
                 <pie-chart :dataset="{borderWidth: 5}" class="mb-3" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths],['Positif', totalcoronas.cases]]"></pie-chart>
               </v-col>
+              <v-col class="pa-2" cols="12" sm="6">
+                <v-list-item-title class="title mb-3">Bar Chart Kasus Covid-19</v-list-item-title>
+                <bar-chart :colors="['#009688']" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths], ['Positif', totalcoronas.cases]]"></bar-chart>
+              </v-col>
             </v-row>
-          </v-continer>
+          </v-container>
+          
         </v-card>
         <!-- end -->
 
