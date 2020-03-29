@@ -20,7 +20,9 @@
                     <v-chip class="ma-2" color="yellow" text-color="black">
                       <v-avatar left>
                         <v-icon>mdi-account-circle</v-icon>
-                      </v-avatar>Hari ini <v-icon> mdi-plus-minus</v-icon> {{totalcoronas.todayCases}} Orang
+                      </v-avatar>Hari ini
+                      <v-icon>mdi-plus-minus</v-icon>
+                      {{totalcoronas.todayCases}} Orang
                     </v-chip>
                   </v-navigation-drawer>
                 </v-card>
@@ -37,7 +39,8 @@
                     <v-chip class="ma-2" color="red" text-color="white">
                       <v-avatar left>
                         <v-icon>mdi-account-circle</v-icon>
-                      </v-avatar>Hari ini {{totalcoronas.todayDeaths}} Orang
+                      </v-avatar>
+                      Hari ini {{totalcoronas.todayDeaths}} Orang
                     </v-chip>
                   </v-navigation-drawer>
                 </v-card>
@@ -54,13 +57,34 @@
                     <v-chip class="ma-2" color="teal" text-color="white">
                       <v-avatar left>
                         <v-icon>mdi-account-circle</v-icon>
-                      </v-avatar>{{totalcoronas.active}} Orang Masih Perawatan
+                      </v-avatar>
+                      {{totalcoronas.active}} Orang Masih Perawatan
                     </v-chip>
                   </v-navigation-drawer>
                 </v-card>
               </v-col>
             </v-list-item-content>
           </v-list-item>
+          <v-container class="grey lighten-5">
+            <v-row justify="center" no-gutters>
+              <v-col class="pa-2" cols="12" sm="6">
+                <v-list-item-title class="title mb-4">Grafik Kasus Positif</v-list-item-title>
+                <area-chart xmin="3/2/20" :colors="['#FF9800','#666']" :data="historyid.timeline.cases"></area-chart>
+              </v-col>
+              <v-col class="pa-2" cols="12" sm="6">
+                <v-list-item-title class="title mb-3">Grafik Kasus Meninggal</v-list-item-title>
+                <area-chart xmin="3/11/20" :colors="['#E91E63','#666']" :data="historyid.timeline.deaths"></area-chart>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-continer>
+            <v-row justify="center" no-gutters>
+              <v-col class="pa-2" cols="12" sm="6">
+                <v-list-item-title class="title mb-3">Persentase Kasus Covid-19</v-list-item-title>
+                <pie-chart :dataset="{borderWidth: 5}" class="mb-3" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths],['Positif', totalcoronas.cases]]"></pie-chart>
+              </v-col>
+            </v-row>
+          </v-continer>
         </v-card>
         <!-- end -->
 
@@ -136,11 +160,12 @@ export default {
     return {
       coronas: [],
       totalcoronas: [],
+      historyid: [],
       search: ""
     };
   },
   mounted() {
-    this.load(), this.loadd(), this.moment();
+    this.load(), this.loadd(), this.historyind(), this.moment();
   },
   computed: {
     filterProv: function() {
@@ -162,7 +187,13 @@ export default {
       axios
         .get("https://corona.lmao.ninja/countries/Indonesia")
         .then(res => (this.totalcoronas = res.data))
-        .catch(error => console.log(error.response.data.data));
+        .catch(error => console.log(error.response.data));
+    },
+    async historyind() {
+      axios
+        .get("https://corona.lmao.ninja/v2/historical/Indonesia")
+        .then(res => (this.historyid = res.data))
+        .catch(error => console.log(error.response.data));
     },
     moment: function() {
       return moment();
