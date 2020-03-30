@@ -51,7 +51,7 @@
             <v-card shaped>
               <v-navigation-drawer dark src="../assets/odp.jpg" width="100%" permanent>
                 <v-card-title class="white--text headline">ODP (Orang Dalam Pengawasan)</v-card-title>
-                <p class="ml-3 white--text display-2">694</p>
+                <p class="ml-3 white--text display-2">800</p>
                 <v-card-actions>
                   <p class="pl-2 white--text subtitle-1">Orang</p>
                 </v-card-actions>
@@ -63,7 +63,7 @@
             <v-card shaped>
               <v-navigation-drawer dark src="../assets/pdp.jpg" width="100%" permanent>
                 <v-card-title class="white--text headline">PDP (Pasien Dalam Pengawasan)</v-card-title>
-                <p class="ml-3 white--text display-2">9</p>
+                <p class="ml-3 white--text display-2">10</p>
                 <v-card-actions>
                   <p class="pl-2 white--text subtitle-1">Orang</p>
                 </v-card-actions>
