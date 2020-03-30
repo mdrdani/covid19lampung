@@ -81,11 +81,11 @@
             <v-row justify="center" no-gutters>
               <v-col class="pa-2" cols="12" sm="6">
                 <v-list-item-title class="title mb-3">Pie Chart Kasus Covid-19</v-list-item-title>
-                <pie-chart :dataset="{borderWidth: 5}" class="mb-3" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths],['Positif', totalcoronas.cases]]"></pie-chart>
+                <pie-chart :dataset="{borderWidth: 5}" class="mb-3" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths],['Positif (Perawatan)', totalcoronas.active]]"></pie-chart>
               </v-col>
               <v-col class="pa-2" cols="12" sm="6">
                 <v-list-item-title class="title mb-3">Bar Chart Kasus Covid-19</v-list-item-title>
-                <bar-chart :colors="['#009688']" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths], ['Positif', totalcoronas.cases]]"></bar-chart>
+                <bar-chart :colors="['#009688']" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths], ['Positif (Perawatan)', totalcoronas.active]]"></bar-chart>
               </v-col>
             </v-row>
           </v-container>

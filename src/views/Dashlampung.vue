@@ -47,7 +47,7 @@
             </v-card>
           </v-col>
 
-          <v-col class="float-right" cols="12" sm="4">
+          <!-- <v-col class="float-right" cols="12" sm="4">
             <v-card shaped>
               <v-navigation-drawer dark src="../assets/odp.jpg" width="100%" permanent>
                 <v-card-title class="white--text headline">ODP (Orang Dalam Pengawasan)</v-card-title>
@@ -69,7 +69,7 @@
                 </v-card-actions>
               </v-navigation-drawer>
             </v-card>
-          </v-col>
+          </v-col> -->
         </v-list-item-content>
       </v-list-item>
     </v-card>
