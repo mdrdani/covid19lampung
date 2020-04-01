@@ -14,7 +14,7 @@
                   <v-navigation-drawer dark src="../assets/emergency.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Positif</v-card-title>
                     <p class="ml-3 white--text display-2">
-                      {{totalcoronas.cases}}
+                      {{totalCoronas.cases}}
                       <span class="headline">Orang</span>
                     </p>
                     <v-chip class="ma-2" color="yellow" text-color="black">
@@ -22,7 +22,7 @@
                         <v-icon>mdi-account-circle</v-icon>
                       </v-avatar>Hari ini
                       <v-icon>mdi-plus-minus</v-icon>
-                      {{totalcoronas.todayCases}} Orang
+                      {{totalCoronas.todayCases}} Orang
                     </v-chip>
                   </v-navigation-drawer>
                 </v-card>
@@ -33,14 +33,14 @@
                   <v-navigation-drawer dark src="../assets/emergency2.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Meninggal</v-card-title>
                     <p class="ml-3 white--text display-2">
-                      {{totalcoronas.deaths}}
+                      {{totalCoronas.deaths}}
                       <span class="headline">Orang</span>
                     </p>
                     <v-chip class="ma-2" color="red" text-color="white">
                       <v-avatar left>
                         <v-icon>mdi-account-circle</v-icon>
                       </v-avatar>
-                      Hari ini {{totalcoronas.todayDeaths}} Orang
+                      Hari ini {{totalCoronas.todayDeaths}} Orang
                     </v-chip>
                   </v-navigation-drawer>
                 </v-card>
@@ -51,14 +51,14 @@
                   <v-navigation-drawer dark src="../assets/emergency3.jpg" width="100%" permanent>
                     <v-card-title class="white--text headline">Kasus Sembuh</v-card-title>
                     <p class="ml-3 white--text display-2">
-                      {{totalcoronas.recovered}}
+                      {{totalCoronas.recovered}}
                       <span class="headline">Orang</span>
                     </p>
                     <v-chip class="ma-2" color="teal" text-color="white">
                       <v-avatar left>
                         <v-icon>mdi-account-circle</v-icon>
                       </v-avatar>
-                      {{totalcoronas.active}} Orang Masih Perawatan
+                      {{totalCoronas.active}} Orang Masih Perawatan
                     </v-chip>
                   </v-navigation-drawer>
                 </v-card>
@@ -69,11 +69,11 @@
             <v-row justify="center" no-gutters>
               <v-col class="pa-2" cols="12" sm="6">
                 <v-list-item-title class="title mb-4">Grafik Kasus Positif</v-list-item-title>
-                <area-chart xmin="3/2/20" :colors="['#FF9800','#666']" :data="historyid.timeline.cases"></area-chart>
+                <area-chart xmin="3/2/20" :colors="['#FF9800','#666']" :data="historyId.timeline.cases"></area-chart>
               </v-col>
               <v-col class="pa-2" cols="12" sm="6">
                 <v-list-item-title class="title mb-3">Grafik Kasus Meninggal</v-list-item-title>
-                <area-chart xmin="3/11/20" :colors="['#E91E63','#666']" :data="historyid.timeline.deaths"></area-chart>
+                <area-chart xmin="3/11/20" :colors="['#E91E63','#666']" :data="historyId.timeline.deaths"></area-chart>
               </v-col>
             </v-row>
           </v-container>
@@ -81,11 +81,11 @@
             <v-row justify="center" no-gutters>
               <v-col class="pa-2" cols="12" sm="6">
                 <v-list-item-title class="title mb-3">Pie Chart Kasus Covid-19</v-list-item-title>
-                <pie-chart :dataset="{borderWidth: 5}" class="mb-3" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths],['Positif (Perawatan)', totalcoronas.active]]"></pie-chart>
+                <pie-chart :dataset="{borderWidth: 5}" class="mb-3" :data="[['Sembuh', totalCoronas.recovered], ['Meninggal', totalCoronas.deaths],['Positif (Perawatan)', totalCoronas.active]]"></pie-chart>
               </v-col>
               <v-col class="pa-2" cols="12" sm="6">
                 <v-list-item-title class="title mb-3">Bar Chart Kasus Covid-19</v-list-item-title>
-                <bar-chart :colors="['#009688']" :data="[['Sembuh', totalcoronas.recovered], ['Meninggal', totalcoronas.deaths], ['Positif (Perawatan)', totalcoronas.active]]"></bar-chart>
+                <bar-chart :colors="['#009688']" :data="[['Sembuh', totalCoronas.recovered], ['Meninggal', totalCoronas.deaths], ['Positif (Perawatan)', totalCoronas.active]]"></bar-chart>
               </v-col>
             </v-row>
           </v-container>
@@ -164,8 +164,8 @@ export default {
   data() {
     return {
       coronas: [],
-      totalcoronas: [],
-      historyid: [],
+      totalCoronas: [],
+      historyId: [],
       search: ""
     };
   },
@@ -191,13 +191,13 @@ export default {
     async loadd() {
       axios
         .get("https://corona.lmao.ninja/countries/Indonesia")
-        .then(res => (this.totalcoronas = res.data))
+        .then(res => (this.totalCoronas = res.data))
         .catch(error => console.log(error.response.data));
     },
     async historyind() {
       axios
         .get("https://corona.lmao.ninja/v2/historical/Indonesia")
-        .then(res => (this.historyid = res.data))
+        .then(res => (this.historyId = res.data))
         .catch(error => console.log(error.response.data));
     },
     moment: function() {

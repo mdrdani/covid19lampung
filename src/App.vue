@@ -15,7 +15,7 @@
 
     <v-app-bar app color="green" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Covid-19</v-toolbar-title>
+      <v-toolbar-title>Pantau Covid-19</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
